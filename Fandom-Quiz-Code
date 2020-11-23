@@ -1,0 +1,125 @@
+var  readlineSync = require("readline-sync");
+
+console.log("Hello, This is Amaan. I Welcome you to the 'Dark Quiz!' Let's check how well you know about everyone's favourite series - DARK")
+
+var userName = readlineSync.question("What is your name?");
+console.log("Hey, " + userName + "!" + " Shall we begin?") 
+
+console.log("Answer 2 questions correctly to play level 2");
+
+console.log("-------------------------")
+
+var score = 0;
+var scoree = 0;
+
+{
+
+function play(question, answer) {
+  var playerAnswer = readlineSync.question(question);
+  if (playerAnswer === answer) {
+    console.log("Right Answer!");
+    score = score + 1;
+  } else {
+    console.log("Ah, this question was tricky. Nevermind");
+    
+  }
+  console.log("Current Score: ", score);
+  console.log("-------------");
+}
+
+var questions = [ {
+  question: "When would the apocalypse happen? a:June 27   b:July 27     Answer: ",
+  answer: "a",
+}, {
+  question: "What is the name of the secret society of time travellers? a:Sic Mundus Creatus Est   b:Sic Mundus     Answer: ",
+  answer: "b",
+}, {
+  question: "In how many years does the cycle takes place? a:29   b:33      Answer: ",
+  answer: "b",
+}]
+
+
+for (i=0; i < questions.length ; i++) {
+ var currentquestion = questions[i];
+ play(currentquestion.question , currentquestion.answer);
+}
+ 
+}
+
+console.log("Level One Score: ", score) 
+  if (score >= 2) {
+    console.log("Congratulation! You can play Level 2");
+     console.log("LEVEL TWO");
+
+  console.log("Each right answer gives you 2 Points and a wrong answer deduces 1 point")
+
+console.log("Let's begin!")
+
+var scoree = 0;
+// var gScore = score + scoree; 
+
+  function playTwo(question, answer) {
+  var playerAnswer = readlineSync.question(question);
+  if (playerAnswer === answer) {
+    console.log("Right Answer!");
+    scoree = scoree + 2;
+    console.log("Score: ", scoree);
+  } else {
+    console.log("Wrong!");
+    scoree = scoree - 1;
+    console.log("Score: ", scoree);
+  }
+}
+
+var questionsTwo = [ {
+  question: "Who is Noah’s Wife? a:Elisabeth Doppler   b:Claudia Tiedemann   c:Charlotte Doppler     Answer: ",
+  answer: "a",
+}, {
+  question: "Who invents the time machine? a: Claudia Tiedmann   b:Michael Kahnwald   c:H.G. Tannhaus     Answer: ",
+  answer: "c",
+}, {
+  question: "Jonas is not blood-related to? a:Martha Neilson   b:Ines Kahnwald   c:Hannah Krüger    Answer: ",
+  answer: "b",
+}];
+
+for (i=0; i < questionsTwo.length ; i++) {
+ var currentquestionTwo = questionsTwo[i];
+ playTwo(currentquestionTwo.question , currentquestionTwo.answer);
+}
+
+console.log("-------END---------")
+console.log("Your Final Score = Level One Score + Level Two Score:  ", score + scoree);
+
+  } else {
+    console.log("Maybe, you should watch DARK again!");
+  }
+  
+  console.log("---------------------------------------");
+
+  var scoreBonus = 5;
+  // var negBonus = -2; 
+
+  var bonus = readlineSync.question("Type 'y' to play a Bonus question for 5 Points?") 
+
+  if (bonus === "y" ) {
+    console.log("Bonus Question!");
+
+     function playBonus(question, answer) {
+  var playerAnswer = readlineSync.question(question);
+  if (playerAnswer === answer) {
+    console.log("Right Answer!");
+    console.log("Bonus Score: ", scoreBonus);
+    console.log("-------END---------")
+console.log("Your Final Score = Levels Score + BONUS:  ", scoree + score + scoreBonus);
+  } else {
+    console.log("Wrong!");
+    console.log(" Maybe, you should bingewatch again!");
+    console.log("-------END---------")
+  } 
+} 
+
+playBonus("What is the name of Claudie Tiedemann’s dog?","Gretchen")
+
+  } else {
+    console.log("Have a Nice Day, Bye!")
+  }
